@@ -1,0 +1,16 @@
+{
+  "name": "aleo_vanillajs_api_usage",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@aleohq/sdk": "^0.6.0",
+    "tslib": "^2.6.2",
+    "vite": "^4.4.12"
+  }
+}
