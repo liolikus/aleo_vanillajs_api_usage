@@ -94,11 +94,12 @@ async function getMappingValueAsync() {
         let public_connection = new AleoNetworkClient("https://api.explorer.aleo.org/v1");
         let programId = "credits.aleo";
         let mappingName = "account";
-        let mappingKey = "aleo1xvlh6eyf5lgfv2z5za47j6qkh3uv5e0ga6gdzg5l4rssheymxsqqsnkgc4";
-        let getMappingValue = await public_connection.getMappingValue(programId, mappingName, mappingKey);//programId, mappingName, key (e.g. wallet address)
+        let key = "aleo1xvlh6eyf5lgfv2z5za47j6qkh3uv5e0ga6gdzg5l4rssheymxsqqsnkgc4";
+        let getMappingValue = await public_connection.getProgramMappingValue(programId, mappingName, key);//programId, mappingName, key (e.g. wallet address)
         return getMappingValue;
+        
     } catch (error) {
-        console.error("Error in getMappingValue:", error);
+        console.error("Error in getMappingValue:");
         throw error; 
     }
 }
@@ -151,7 +152,7 @@ onmessage = async function (e) {
         } catch (error) {
             postMessage({ error: error.message }); 
         }
-    } else if (e.data === "mappingValue") {
+    } else if (e.data === "getMappingValue") {
         try {
             const result = await getMappingValueAsync();
             postMessage(result);

@@ -9,7 +9,7 @@ const worker = new Worker("worker.js", {
 
 worker.onmessage = function (e) {
     console.log(e.data);
-    alert(e.data);
+    // alert(e.data);
 };
 
 window.execute = () => {
@@ -36,10 +36,11 @@ window.getProgramMappingNames = () => {
   worker.postMessage("mappingNames");
 };
 window.getMappingValue = () => {
-  worker.postMessage("mappingValue");
+  worker.postMessage("getMappingValue");
 };
 
 document.querySelector("#app").innerHTML = `
+
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -51,19 +52,20 @@ document.querySelector("#app").innerHTML = `
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
     <h1>Hello Aleo!</h1>
-    <div class="card">
-      <button onclick="window.execute()">Call Execute Function</button>
-      <button onclick="window.key()">Get Private Key</button>
-      <button onclick="window.getLatestBlock()">Get Latest Block</button>
-      <button onclick="window.getLatestHeight()">Get Latest Height</button>
-      <button onclick="window.getTransaction()">Get Transaction by ID</button>
-    </div>
-    <div class="card">
+    <button onclick="window.execute()">Call Execute Function</button>
+    <button onclick="window.key()">Get Private Key</button>
+    <button onclick="window.getLatestBlock()">Get Latest Block</button>
+    <button onclick="window.getLatestHeight()">Get Latest Height</button>
+    <button onclick="window.getTransaction()">Get Transaction by ID</button>
+  </div>
+  <div class="card">
     <button onclick="window.getProgram()">Get Program by ID</button>
     <button onclick="window.getProgramMappingNames()">Get Program Mappings</button>
     <button onclick="window.getMappingValue()">Get Program Mapping Value</button>
 
   </div>
+
+
     <p class="read-the-docs">
       Click on the Aleo logo to learn more
     </p>
